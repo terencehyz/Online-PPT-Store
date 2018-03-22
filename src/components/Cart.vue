@@ -3,7 +3,7 @@
     <elnav></elnav>
     <el-row>
       <el-col :span="20" :offset="2">
-        <h2><i class="fa fa-shopping-cart iconColor" aria-hidden="true"></i>&nbsp;购物车</h2>
+        <h2><i class="fa fa-list-ul iconColor" aria-hidden="true"></i>&nbsp;愿望清单</h2>
         <el-table
           ref="multipleTable"
           :data="tableData3"

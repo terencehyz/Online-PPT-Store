@@ -16,10 +16,9 @@
           <span>使用条款</span>
           <span class="mod_copyright_split">|</span>
           <span>加入我们</span>
-          <span class="mod_copyright_split">|</span>
-          <router-link to="/addProduct" style="text-decoration: none; color: black">管理</router-link>
+
         </div>
-        <p style="font-size: x-small; text-align: center">Copyright &copy; 2004 - 2017 shop.hanyuzhou.com 版权所有</p>
+        <p style="font-size: x-small; text-align: center">Copyright &copy;2018 shop.hanyuzhou.com 版权所有</p>
       </el-col>
       <el-col :span="6" class="bheight">
         <h4>We Accept</h4>

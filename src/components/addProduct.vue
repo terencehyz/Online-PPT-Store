@@ -5,7 +5,7 @@
       <el-row class="divpos">
         <el-col :span="20" :offset="2">
           <el-card class="box-card">
-            <h2>添加商品</h2>
+            <h2><i class="fa fa-cloud-upload iconColor" aria-hidden="true"></i>&nbsp;上传PPT</h2>
             <el-row>
               <el-col :span="11" class="inputmg">
                 <el-input
@@ -150,6 +150,7 @@
         params.append('Type', this.Type);
         params.append('Way', this.Way);
         params.append('value', this.value);
+        params.append('Uid', localStorage.getItem('userId'));
         this.$http.post(url, params).then(function (res) {
           if (res.data.status == 1) {
             _this.$message({
@@ -179,7 +180,7 @@
       }
     },
     created() {
-      this.checkUser();
+
     }
   }
 </script>

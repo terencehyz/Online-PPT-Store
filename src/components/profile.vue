@@ -9,10 +9,16 @@
         <el-row>
           <el-col :span="9">
             <el-card class="box-card bgimg">
-              <h4>{{User.nickName}}</h4>
-              <p><i class="fa fa-jpy" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{User.credit}}</p>
-              <p><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{User.email}}</p>
-              <p><i class="fa fa-id-card-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{User.id}}</p>
+              <el-row>
+                <el-col :span="18">
+                  <h4>{{User.nickName}}</h4>
+                  <p><i class="fa fa-jpy" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{User.credit}}</p>
+                  <p><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{User.email}}</p>
+                  <p><i class="fa fa-id-card-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{User.id}}</p>
+                </el-col>
+                <el-col :span="6"><el-button type="primary" plain @click="modifyData()">修改信息</el-button></el-col>
+              </el-row>
+
             </el-card>
           </el-col>
           <el-col :span="14" :offset="1">
@@ -188,10 +194,39 @@
               message: '充值成功！',
               type: 'success'
             });
+            _this.getData();
           }
           else {
             _this.$message.error('充值失败，请稍后再试');
           }
+        })
+      },
+      modifyData() {
+        let _this = this;
+        this.$prompt('请输入新昵称','昵称修改', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消'
+        }).then(({value})=> {
+          const loading = _this.$loading({
+            lock: true,
+            text: '修改中',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+          });
+          let params = new URLSearchParams();
+          params.append('Uid', localStorage.getItem('userId'));
+          params.append('NickName', value);
+          let url = 'api/modifyUser';
+          _this.$http.post(url,params).then(function (res) {
+            if (res.data.status == 1) {
+              _this.getData();
+              _this.$message({
+                message: '修改成功！',
+                type: 'success'
+              });
+            }
+            loading.close();
+          })
         })
       },
       getData() {

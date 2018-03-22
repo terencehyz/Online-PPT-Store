@@ -3,9 +3,13 @@
 
     <el-menu-item index="/">主页</el-menu-item>
 
-    <el-menu-item index="/cart">购物车</el-menu-item>
+    <el-menu-item index="/cart">愿望清单</el-menu-item>
 
     <el-menu-item index="/purchased">仓库</el-menu-item>
+
+    <el-menu-item index="/addProduct">上传</el-menu-item>
+
+    <el-menu-item index="/Uploaded">我的上传</el-menu-item>
 
     <el-menu-item index="/login" v-if="!logged">登陆</el-menu-item>
 

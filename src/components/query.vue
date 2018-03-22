@@ -9,7 +9,7 @@
         </h2>
         <el-row :gutter="16">
           <el-col :span="8" v-for="(good,index) in goods" :key="good.id">
-            <el-card :body-style="{ padding: '0px' }" style="margin-bottom: 5px">
+            <el-card :body-style="{ padding: '0px' }" style="margin-bottom: 25px">
               <img v-bind:src="good.Thumbnail" class="image" v-on:click="pptNav(good.id)">
               <div style="padding: 14px;">
                 <span>{{good.Title}}</span>

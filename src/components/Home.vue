@@ -39,13 +39,13 @@
           </h2>
           <el-row :gutter="16">
             <el-col :span="8" v-for="(good,index) in goods" :key="good.id">
-              <el-card :body-style="{ padding: '0px' }" style="margin-bottom: 5px">
+              <el-card :body-style="{ padding: '0px' }" style="margin-bottom: 25px">
                 <img v-bind:src="good.Thumbnail" class="image" v-on:click="pptNav(good.id)">
                 <div style="padding: 14px;">
                   <span>{{good.Title}}</span>
                   <div class="bottom clearfix">
                     <time class="time">
-                      <i class="fa fa-jpy" aria-hidden="true"></i>
+                      <i class="fa fa-money" aria-hidden="true"></i>
                       {{ good.value }}
                     </time>
                     <el-button type="text" class="button">更多</el-button>

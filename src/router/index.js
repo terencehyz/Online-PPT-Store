@@ -11,6 +11,7 @@ import Type from '@/components/type'
 import Way from '@/components/way'
 import AddProduct from '@/components/addProduct'
 import Query from '@/components/query'
+import Uploaded from '@/components/uploaded'
 
 Vue.use(Router)
 
@@ -65,6 +66,11 @@ export default new Router({
       path: '/AddProduct',
       name: 'AddProduct',
       component: AddProduct
+    },
+    {
+      path: '/Uploaded',
+      name: 'Uploaded',
+      component: Uploaded
     },
     {
       path: '/query/:id',
