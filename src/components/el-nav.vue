@@ -1,15 +1,17 @@
 <template>
   <el-menu class="el-menu-demo" mode="horizontal" :router="true">
 
-    <el-menu-item index="/">主页</el-menu-item>
+    <el-menu-item index="/" v-if="!admin">主页</el-menu-item>
 
-    <el-menu-item index="/cart">愿望清单</el-menu-item>
+    <el-menu-item index="/verify" v-if="admin&&logged">审核</el-menu-item>
 
-    <el-menu-item index="/purchased">仓库</el-menu-item>
+    <el-menu-item index="/cart" v-if="(!admin)&&logged">愿望清单</el-menu-item>
 
-    <el-menu-item index="/addProduct">上传</el-menu-item>
+    <el-menu-item index="/purchased" v-if="(!admin)&&logged">仓库</el-menu-item>
 
-    <el-menu-item index="/Uploaded">我的上传</el-menu-item>
+    <el-menu-item index="/addProduct" v-if="logged">上传</el-menu-item>
+
+    <el-menu-item index="/Uploaded" v-if="logged">我的上传</el-menu-item>
 
     <el-menu-item index="/login" v-if="!logged">登陆</el-menu-item>
 
@@ -27,7 +29,8 @@
       return {
         logged: false,
         username: '',
-        credit: ''
+        credit: '',
+        admin: false
       }
     },
     methods: {
@@ -36,6 +39,13 @@
         this.logged = localStorage.getItem('logged');
         if (this.logged == true) {
           _this.username = localStorage.getItem('nickName');
+        }
+        let ad = localStorage.getItem('userId');
+        if (ad==1){
+          _this.admin = true;
+        }
+        else{
+          _this.admin = false;
         }
       },
       logout() {

@@ -25,7 +25,7 @@
                 <el-form-item label="下载链接">
                   <span>{{ props.row.Download }}</span>
                 </el-form-item>
-                <el-form-item label="查看详情">
+                <el-form-item label="查看详情" v-if="props.row.checked">
                   <span>
                     <el-button type="primary" plain v-on:click="navTo(props.row.id)">查看</el-button>
                   </span>
@@ -45,7 +45,10 @@
             label="下载量"
             prop="DLCount">
           </el-table-column>
-
+          <el-table-column
+            label="状态"
+            prop="msg">
+          </el-table-column>
         </el-table>
       </el-col>
     </el-row>
@@ -88,6 +91,20 @@
         var _this = this;
         var url = '/api/getUploaded?Uid=' + localStorage.getItem('userId');
         this.$http.get(url).then(function (res) {
+          for (let i = 0; i < res.data.data.length; i++) {
+            if (res.data.data[i].checked == 1){
+              res.data.data[i].msg="已通过";
+              res.data.data[i].checked=true;
+            }
+            else if(res.data.data[i].checked == 0){
+              res.data.data[i].msg="待审核";
+              res.data.data[i].checked=false;
+            }
+            else{
+              res.data.data[i].msg="未通过";
+              res.data.data[i].checked=false;
+            }
+          }
           _this.purchaseList = res.data.data;
         })
       },

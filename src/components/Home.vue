@@ -139,7 +139,12 @@
       }
     },
     created() {
-      this.getData();
+      let admin=localStorage.getItem('userId');
+      if (admin==1||admin==2){
+        this.$router.push('/verify');
+      } else{
+        this.getData();
+      }
     }
   }
 </script>

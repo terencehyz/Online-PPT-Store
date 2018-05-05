@@ -12,6 +12,8 @@ import Way from '@/components/way'
 import AddProduct from '@/components/addProduct'
 import Query from '@/components/query'
 import Uploaded from '@/components/uploaded'
+import Verify from '@/components/verify'
+import Reset from '@/components/ResetPassword'
 
 Vue.use(Router)
 
@@ -76,6 +78,16 @@ export default new Router({
       path: '/query/:id',
       name: 'query',
       component: Query
+    },
+    {
+      path: '/verify',
+      name: 'Verify',
+      component: Verify
+    },
+    {
+      path: '/ResetPassword',
+      name: 'Reset',
+      component: Reset
     }
   ]
 })

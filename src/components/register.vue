@@ -20,7 +20,7 @@
               </el-row>
               <el-row>
                 <el-col :span="6">
-                  <el-button type="text" style="color: #878D99">忘记密码</el-button>
+                  <el-button type="text" style="color: #878D99" @click="navFor()">忘记密码</el-button>
                 </el-col>
                 <el-col :span="6" :offset="12">
                   <el-button type="text" style="color: #878D99; text-align: right" @click="navLog()">已经注册</el-button>
@@ -65,6 +65,9 @@
       }
     },
     methods: {
+      navFor() {
+        this.$router.push({path: '/ResetPassword'});
+      },
       navLog() {
         this.$router.push({path: '/login'})
       },
