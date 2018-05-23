@@ -92,13 +92,21 @@
       verifySuccess(id){
         let _this = this;
         let url = '/api/verifySuccess';
-        let params;
+        let params = new URLSearchParams();
+        params.append('Pid', id);
         this.$http.post(url,params).then(function (res) {
 
         });
         this.getdata();
       },
       verifyFailed(id){
+        let _this = this;
+        let url = '/api/verifyFailed';
+        let params = new URLSearchParams();
+        params.append('Pid',id);
+        this.$http.post(url,params).then(function (res) {
+
+        });
         this.getdata();
       }
     },

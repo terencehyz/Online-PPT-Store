@@ -15,11 +15,14 @@
 
     <el-menu-item index="/login" v-if="!logged">登陆</el-menu-item>
 
-    <el-submenu index="" v-if="logged">
+    <el-submenu index="" v-if="(!admin)&&logged">
       <template slot="title">我的</template>
       <el-menu-item index="/login" @click.native="logout()">登出</el-menu-item>
       <el-menu-item index="/profile">个人中心</el-menu-item>
     </el-submenu>
+
+    <el-menu-item index="/login" v-if="admin" @click.native="logout()">登出</el-menu-item>
+
 
   </el-menu>
 </template>
